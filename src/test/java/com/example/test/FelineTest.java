@@ -42,4 +42,10 @@ public class FelineTest {
         assertEquals(kittensCount, feline.getKittens(kittensCount));
         verify(feline).getKittens(kittensCount); // проверяем, что getKittens() был вызван шпионом feline с параметром kittensCount
     }
+
+    @Test
+    public void getFoodReturnListOfPredatorFood() {
+        assertEquals(PREDATOR_SPECIES, feline.getFood());
+        verify(feline).getFood(); // проверяем, что getFood() был вызван шпионом feline
+    }
 }
