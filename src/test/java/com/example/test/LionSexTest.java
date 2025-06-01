@@ -1,6 +1,6 @@
 package com.example.test;
 
-import com.example.FelineInterface;
+import com.example.Feline;
 import com.example.Lion;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 public class LionSexTest {
     private final String sex;
     private final boolean hasMane;
-    private FelineInterface felineInterface;
+    private Feline feline;
 
     public LionSexTest(String sex, boolean hasMane) {
         this.sex = sex;
@@ -29,7 +29,7 @@ public class LionSexTest {
 
     @Test
     public void doesHaveManeTest() throws Exception {
-        Lion lion = new Lion(sex, felineInterface);
+        Lion lion = new Lion(sex, feline);
         assertEquals(hasMane, lion.doesHaveMane());
     }
 }

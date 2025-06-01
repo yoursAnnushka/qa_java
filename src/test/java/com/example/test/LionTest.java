@@ -1,6 +1,6 @@
 package com.example.test;
 
-import com.example.FelineInterface;
+import com.example.Feline;
 import com.example.Lion;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,26 +17,26 @@ import static org.mockito.Mockito.verify;
 public class LionTest {
 
     @Mock
-    FelineInterface felineInterface;
+    Feline feline;
 
     @Test
     public void getKittensTest() throws Exception {
-        Lion lion = new Lion("Самец", felineInterface);
+        Lion lion = new Lion("Самец", feline);
         lion.getKittens();
-        verify(felineInterface).getKittens(); // проверяем, что getKittens() был вызван на моке felineInterface
+        verify(feline).getKittens(); // проверяем, что getKittens() был вызван на моке feline
     }
 
     @Test
-    public void getFoodReturnListOfLionFood() throws Exception {
-        Lion lion = new Lion("Самка", felineInterface);
+    public void getFoodReturnListOfLionFoodTest() throws Exception {
+        Lion lion = new Lion("Самка", feline);
         lion.getFood();
-        verify(felineInterface).getFood(); // проверяем, что getFood() был вызван на моке felineInterface
+        verify(feline).getFood("Хищник"); // проверяем, что getFood() был вызван на моке feline с параметром "Хищник"
     }
 
     @Test
     public void doesHaveManeExceptionTextTest () {
         Throwable throwable = catchThrowable(() -> {
-            Lion lion = new Lion("Львенок", felineInterface);
+            Lion lion = new Lion("Львенок", feline);
         });
         assertThat(throwable).isInstanceOf(Exception.class).hasMessage(LION_SEX_EXCEPTION_TEXT);
     }
