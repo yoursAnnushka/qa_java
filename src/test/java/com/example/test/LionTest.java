@@ -9,9 +9,12 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import static com.example.Lion.LION_SEX_EXCEPTION_TEXT;
 
+import static com.example.constants.AnimalSpecies.PREDATOR_SPECIES;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionTest {
@@ -29,8 +32,8 @@ public class LionTest {
     @Test
     public void getFoodReturnListOfLionFoodTest() throws Exception {
         Lion lion = new Lion("Самка", feline);
-        lion.getFood();
-        verify(feline).getFood("Хищник"); // проверяем, что getFood() был вызван на моке feline с параметром "Хищник"
+        when(feline.getFood("Хищник")).thenReturn(PREDATOR_SPECIES);
+        assertEquals(PREDATOR_SPECIES, lion.getFood());
     }
 
     @Test
